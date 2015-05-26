@@ -39,7 +39,7 @@ $ docker run -d -e INSPECTIT_CMR_ADDR=<cmr-ip-address> -e INSPECTIT_CMR_PORT=<cm
 ```
 
 ## Specifying the Tomcat version
-Currently, this image is based on the latest offical Tomcat image. Later, support for different versions is added.
+Currently, this image is based on the latest official Tomcat image. Later, support for different versions is added.
 
 ## Specifying the inspectIT version
 Currently, this image is based on the latest beta inspectIT release. Later, support for other versions is added.
