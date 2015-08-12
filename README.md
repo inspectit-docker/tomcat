@@ -1,3 +1,5 @@
+[![](https://badge.imagelayers.io/inspectit/tomcat:latest.svg)](https://imagelayers.io/?images=inspectit/tomcat:latest 'Get your own badge on imagelayers.io')
+
 # Tomcat with inspectIT
 Tomcat Dockerfile including inspectIT
 
