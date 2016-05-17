@@ -3,7 +3,7 @@
 # Tomcat with inspectIT
 Tomcat Dockerfile including inspectIT
 
-This docker image is based on the official Tomcat docker image including the inspectIT agent of the open source APM solution [www.inspectit.eu](http://www.inspectit.eu).
+This docker image is based on the official Tomcat docker image including the inspectIT agent of the open source APM solution [www.inspectit.rocks](http://www.inspectit.rocks).
 This image can be used easily as a replacement for the Tomcat image, meaning you only have to change your existing Dockerfile ```FROM tomcat:latest``` to ```FROM inspectit/tomcat:latest```.
 
 ## Quickstart
