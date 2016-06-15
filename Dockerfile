@@ -7,7 +7,6 @@ WORKDIR /opt
 #set insepctit env
 ENV INSPECTIT_VERSION 1.6.8.82
 ENV INSPECTIT_AGENT_HOME /opt/agent
-ENV INSPECTIT_CONFIG_HOME /opt/agent/active-config
 
 # get inspectit binary
 # set inspectit jvm options
@@ -19,9 +18,6 @@ RUN wget --no-check-certificate https://github.com/inspectIT/inspectIT/releases/
 
 #copy start script
 COPY run-with-inspectit.sh /run-with-inspectit.sh
-
-#define VOLUME for active agent config
-VOLUME ["/opt/agent/active-config"]
 
 # define default command
 CMD ["/run-with-inspectit.sh", "run"]
