@@ -16,21 +16,21 @@ $ docker run -d --name inspectIT-CMR -p 8182:8182 -p 9070:9070 inspectit/cmr
 Now you can start a container with the following command:
 
 ```bash
-$ docker run -d --link inspectIT-CMR:cmr -v $(pwd)/config:/opt/agent/active-config inspectit/tomcat
+$ docker run -d --link inspectIT-CMR:cmr -p 8080:8080 inspectit/tomcat
 ```
 
-You can now adjust the instrumentation configuration in the folder *config* for your needs. Please refer to our [documentation](https://inspectit-performance.atlassian.net/wiki/display/DOC16/Agent+Configuration) or just leave a comment.
+You can now adjust the instrumentation configuration with the inspectIT UI for your needs. Please refer to our [documentation](https://inspectit-performance.atlassian.net/wiki/display/DOC16/Agent+Configuration) or just leave a comment.
 
 ## Configuration
 ### Agent name
 By default, the inspectIT agent uses the hostname (docker-ID) as agent name. You can set a different name setting ```AGENT_NAME``` or hostname:
 
 ```bash
-$ docker run -d --link inspectIT-CMR:cmr -v $(pwd)/config:/opt/agent/active-config -e AGENT_NAME=<agent-name> inspectit/tomcat
+$ docker run -d --link inspectIT-CMR:cmr -e AGENT_NAME=<agent-name> inspectit/tomcat
 ```
 
 ```bash
-$ docker run -d --link inspectIT-CMR:cmr -h <agent-name> -v $(pwd)/config:/opt/agent/active-config inspectit/tomcat
+$ docker run -d --link inspectIT-CMR:cmr -h <agent-name> inspectit/tomcat
 ```
 
 ### Using a custom inspectIT CMR
@@ -47,7 +47,7 @@ Currently, this image is based on the latest official Tomcat image. Later, suppo
 Currently, this image is based on the latest beta inspectIT release. Later, support for other versions is added.
 
 ## Build the docker image
-If you want to build the Tomcat inspectIT image yourself, checkout this repository and run 
+If you want to build the Tomcat inspectIT image yourself, checkout this repository and run
 
 ```bash
 $ docker build -t inspectit/tomcat .
