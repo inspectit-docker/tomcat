@@ -1,22 +1,22 @@
 FROM tomcat
 MAINTAINER info.inspectit@novatec-gmbh.de
 
-#set Workdir
+# set Workdir
 WORKDIR /opt
 
-#set insepctit env
+# set insepctit env options
 ENV INSPECTIT_VERSION 1.6.9.83
 ENV INSPECTIT_AGENT_HOME /opt/agent
 
 # get inspectit binary
 # set inspectit jvm options
 RUN wget --no-check-certificate https://github.com/inspectIT/inspectIT/releases/download/${INSPECTIT_VERSION}/inspectit-agent-sun1.5-${INSPECTIT_VERSION}.zip \
-&& unzip inspectit-agent-sun1.5-${INSPECTIT_VERSION}.zip \
-&& rm -f inspectit-agent-sun1.5-${INSPECTIT_VERSION}.zip \
-&& sed -i '250i\'"export INSPECTIT_JAVA_OPTS=\"-Xbootclasspath/p:${INSPECTIT_AGENT_HOME}/inspectit-agent.jar -javaagent:${INSPECTIT_AGENT_HOME}/inspectit-agent.jar -Dinspectit.repository=_CMR_ADDRESS_:_CMR_PORT_ -Dinspectit.agent.name=_AGENT_NAME_\"" /usr/local/tomcat/bin/catalina.sh \
-&& sed -i '251i\'"export JAVA_OPTS=\"\${INSPECTIT_JAVA_OPTS} \${JAVA_OPTS}\"" /usr/local/tomcat/bin/catalina.sh
+ && unzip inspectit-agent-sun1.5-${INSPECTIT_VERSION}.zip \
+ && rm -f inspectit-agent-sun1.5-${INSPECTIT_VERSION}.zip \
+ && sed -i '250i\'"export INSPECTIT_JAVA_OPTS=\"-javaagent:${INSPECTIT_AGENT_HOME}/inspectit-agent.jar -Dinspectit.repository=_CMR_ADDRESS_:_CMR_PORT_ -Dinspectit.agent.name=_AGENT_NAME_\"" /usr/local/tomcat/bin/catalina.sh \
+ && sed -i '251i\'"export JAVA_OPTS=\"\${INSPECTIT_JAVA_OPTS} \${JAVA_OPTS}\"" /usr/local/tomcat/bin/catalina.sh
 
-#copy start script
+# copy start script
 COPY run-with-inspectit.sh /run-with-inspectit.sh
 
 # define default command
